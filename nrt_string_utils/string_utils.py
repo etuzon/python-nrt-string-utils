@@ -29,8 +29,8 @@ class StringUtil:
         return list(set(emails))
 
     @staticmethod
-    def get_last_char(s: str) -> str:
-        return s[-1] if len(s) else ''
+    def get_last_char(text: str) -> str:
+        return text[-1] if len(text) else ''
 
     @staticmethod
     def get_urls(text: str) -> list:
@@ -41,40 +41,43 @@ class StringUtil:
         return list(set(urls))
 
     @classmethod
-    def is_decimal(cls, s: Optional[str]) -> bool:
-        if s is None:
+    def is_decimal(cls, text: Optional[str]) -> bool:
+        if text is None:
             return False
 
-        if s != s.strip():
+        if text != text.strip():
             return False
 
-        if cls.get_last_char(s) == '.':
+        if cls.get_last_char(text) == '.':
             return False
 
         try:
-            float(s)
+            float(text)
         except ValueError:
             return False
 
         return True
 
     @staticmethod
-    def is_int(s: Optional[str]) -> bool:
-        if s is None:
+    def is_int(text: Optional[str]) -> bool:
+        if text is None:
             return False
 
-        if s != s.strip():
+        if text != text.strip():
             return False
 
         try:
-            int(s)
+            int(text)
         except ValueError:
             return False
 
         return True
 
     @staticmethod
-    def is_json(text) -> bool:
+    def is_json(text: Optional[str]) -> bool:
+        if text is None:
+            return False
+
         try:
             json.loads(text)
         except ValueError:
@@ -83,20 +86,20 @@ class StringUtil:
         return True
 
     @classmethod
-    def is_positive_decimal(cls, s: Optional[str]) -> bool:
-        return float(s) > 0 if cls.is_decimal(s) else False
+    def is_positive_decimal(cls, text: Optional[str]) -> bool:
+        return float(text) > 0 if cls.is_decimal(text) else False
 
     @classmethod
-    def is_positive_int(cls, s: Optional[str]) -> bool:
-        return int(s) > 0 if cls.is_int(s) else False
+    def is_positive_int(cls, text: Optional[str]) -> bool:
+        return int(text) > 0 if cls.is_int(text) else False
 
     @classmethod
-    def is_unsigned_decimal(cls, s: Optional[str]) -> bool:
-        return float(s) >= 0 if cls.is_decimal(s) else False
+    def is_unsigned_decimal(cls, text: Optional[str]) -> bool:
+        return float(text) >= 0 if cls.is_decimal(text) else False
 
     @staticmethod
-    def is_unsigned_int(s: Optional[str]) -> bool:
-        return s.isdigit() if s is not None else False
+    def is_unsigned_int(text: Optional[str]) -> bool:
+        return text.isdigit() if text is not None else False
 
     @staticmethod
     def sub_string(

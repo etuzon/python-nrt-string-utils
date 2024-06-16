@@ -74,8 +74,7 @@ def test_is_int():
 
 @pytest.mark.parametrize('text, expected', json_data)
 def test_is_json(text, expected):
-    assert StringUtil.is_json('{"test": "test"}')
-    assert not StringUtil.is_json('{"test": "test"')
+    assert StringUtil.is_json(text) == expected
 
 
 def test_is_positive_decimal():
@@ -150,7 +149,6 @@ def test_to_ascii():
     assert StringUtil.to_ascii('test ') == 'test '
     assert StringUtil.to_ascii('') == ''
     assert StringUtil.to_ascii('testこんにちは123') == 'test123'
-
 
 
 def __compare_lists(list_1, list_2):

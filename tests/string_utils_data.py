@@ -41,7 +41,8 @@ json_data = [
     ('}', False),
     ('{test}', False),
     ('{test:}', False),
-    ('{test: "test"}', False)
+    ('{test: "test"}', False),
+    (None, False)
 ]
 
 sub_string_data = [

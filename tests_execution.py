@@ -11,6 +11,7 @@ def __replace_pyproject_version():
         file_lines = [line.strip() for line in f.readlines()]
 
     is_replace = False
+
     for i, line in enumerate(file_lines):
         if line.startswith('version'):
             version = line.split('=')[1]
